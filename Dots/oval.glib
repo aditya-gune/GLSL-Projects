@@ -12,5 +12,5 @@ Program  Oval				\
 	uSquareColor <0. 0. 1.>
 
 Color 1. .9 0
-Sphere 1 50 50
-#Obj salmon.obj
+#Sphere 1 50 50
+Obj salmon.obj
