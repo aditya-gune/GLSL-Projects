@@ -9,8 +9,8 @@ Program  Oval				\
 	uSmooth <false>			\
 	uAd <.001 .1 .5>		\
 	uBd <.001 .1 .5>		\
-	uSquareColor <0. 0. 1.>
+	uSquareColor <0. 0.8 1.>
 
-Color 1. .9 0
+Color 1. .9 1
 Sphere 1 50 50
 #Obj salmon.obj

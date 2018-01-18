@@ -13,22 +13,23 @@ void
 main( )
 {
 	float halfSize = uAd/2.;
-
+	float Ar = uAd/2.;
+	float Br = uBd/2.;
 	float s = vST.s;
 	float t = vST.t;
 	float sp = 2. * s;		// good for spheres
 	float tp = t;
 	int numins = int( sp / uAd );
 	int numint = int( tp / uAd );
-	float scenter = float(numins)*uAd + halfSize;
-	float tcenter = float(numint)*uAd + halfSize;
-	float ds = pow((sp - scenter), 2);	// 0. <= ds <= halfSize
-	float dt = pow((tp - tcenter), 2);	// 0. <= dt <= halfSize
+	float scenter = float(numins)*uAd + Ar;
+	float tcenter = float(numint)*uAd + Br;
+	float ds = pow((sp - scenter)/Ar, 2);	// 0. <= ds <= halfSize
+	float dt = pow((tp - tcenter)/Br, 2);	// 0. <= dt <= halfSize
 	float maxDist = max( ds, dt  );
-	
+
 	gl_FragColor = vColor;		// default color
 	
-	if( (ds+dt) <= pow(halfSize, 2) )
+	if( (ds+dt) <= 0.2 )
 	{
 		
 		if( uSmooth )
