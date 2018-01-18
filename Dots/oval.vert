@@ -18,6 +18,7 @@ main( )
 	
 	vST = gl_MultiTexCoord0.st;
 	vMCposition  = gl_Vertex.xyz;
+	
 	vColor = gl_Color;
 	gl_Position = gl_ModelViewProjectionMatrix * gl_Vertex;
 }
