@@ -29,7 +29,7 @@ main( )
 
 	gl_FragColor = vColor;		// default color
 	
-	if( (ds+dt) <= 0.2 )
+	if( (ds+dt) <= 1 )
 	{
 		
 		if( uSmooth )
