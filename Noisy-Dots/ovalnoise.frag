@@ -3,9 +3,7 @@ in vec3  vMCposition;
 in vec4  vColor;
 in float vLightIntensity;
 in vec2  vST;
-in float Z;
 
-uniform bool uUseChromaDepth;
 uniform sampler2D Noise2; 
 uniform float uAlpha;
 uniform float uAd;
@@ -14,8 +12,6 @@ uniform float uNoiseAmp;
 uniform float uNoiseFreq;
 uniform float uTol;
 uniform vec4  uSquareColor;
-
-vec3 Rainbow( float t );
 
 void
 main( )
@@ -65,12 +61,7 @@ float d = sqrt(ds + dt);
 	{
 		float t = smoothstep( 1-uTol, 1+uTol, d); //- smoothstep( 1-Ar+uTol, 1-Br+uTol, (ds+dt) ) ;
 		gl_FragColor = mix( vec4(1,0,0,1), vColor, t );
-		if( uUseChromaDepth )
-		{
-			float t = (2./3.) * ( Z - uChromaRed ) / ( uChromaBlue - uChromaRed );
-			t = clamp( t, 0., 2./3. );
-			TheColor = Rainbow( t );
-		}
+		
 		
 	}
 	else 
@@ -91,49 +82,4 @@ float d = sqrt(ds + dt);
 	}
 	
 	gl_FragColor.rgb *= vLightIntensity;	// apply lighting model
-}
-vec3
-Rainbow( float t )
-{
-	t = clamp( t, 0., 1. );
-
-	float r = 1.;
-	float g = 0.0;
-	float b = 1.  -  6. * ( t - (5./6.) );
-
-        if( t <= (5./6.) )
-        {
-                r = 6. * ( t - (4./6.) );
-                g = 0.;
-                b = 1.;
-        }
-
-        if( t <= (4./6.) )
-        {
-                r = 0.;
-                g = 1.  -  6. * ( t - (3./6.) );
-                b = 1.;
-        }
-
-        if( t <= (3./6.) )
-        {
-                r = 0.;
-                g = 1.;
-                b = 6. * ( t - (2./6.) );
-        }
-
-        if( t <= (2./6.) )
-        {
-                r = 1.  -  6. * ( t - (1./6.) );
-                g = 1.;
-                b = 0.;
-        }
-
-        if( t <= (1./6.) )
-        {
-                r = 1.;
-                g = 6. * t;
-        }
-
-	return vec3( r, g, b );
 }
