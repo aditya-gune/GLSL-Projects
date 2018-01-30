@@ -8,8 +8,9 @@ Program  OvalNoise                                               \
         uAd <.01 .05 .5>  uBd <.01 .05 .5>						\
         uNoiseAmp <0. 0. 1.>  uNoiseFreq <0. 1. 10.>      	 	\
         uAlpha <0. 1. 1.>                                        \
-        uTol <0. 0. 1.>						\					
-		
+        uTol <0. 0. 1.>											\					
+		uUseChromaDepth <false>									\
+		uChromaRed <-5. 1. 5.> uChromaBlue <-5. 1. 5.> 			
 		
 Color 1. .9 0
 Sphere

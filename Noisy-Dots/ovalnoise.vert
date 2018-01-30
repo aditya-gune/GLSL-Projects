@@ -3,7 +3,7 @@
 out vec3  vMCposition;
 out float vLightIntensity; 
 out vec4  vColor;
-
+out float Z;
 vec3 LIGHTPOS   = vec3( -2., 0., 10. );
 out vec2  vST;
 
@@ -23,5 +23,6 @@ main( )
 	vColor.b = vColor.b;
 	vColor.a = 1.0;
 	vColor = gl_Color;
+	Z = ECposition.z;
 	gl_Position = gl_ModelViewProjectionMatrix * gl_Vertex;
 }
