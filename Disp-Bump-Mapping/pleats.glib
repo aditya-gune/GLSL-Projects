@@ -6,18 +6,18 @@ LookAt 0 0 3  0 0 0  0 1 0
 Vertex		pleats.vert
 Fragment	pleats.frag
 Program		Pleats					\
-				uK <0. 0.0976 1.0>							\
+				uNormal <true>								\
+				uK <0. 0.0427 1.0>							\
 				uP <0. 0.4048 1>							\
-                uNoiseAmp <0. 0. 5.0>					\
-                uNoiseFreq <0. 0.1 5.0>					\
-                uKa <0. 0.1976 1.0>                        \
-                uKd <0. 0.4232 1.0>                        \
-                uKs <0. 0.5427 1.0>                        \
-                uShininess <1. 5. 25.>               \
-                uLightX <-20. 5. 20.>                   \
+                uNoiseAmp <0. 0. 5.0>						\
+                uNoiseFreq <0. 0.1 5.0>						\
+                uKa <0. 0.1976 1.0>                         \
+                uKd <0. 0.4232 1.0>                         \
+                uKs <0. 0.5427 1.0>                         \
+                uShininess <1. 5. 25.>              		\
+                uLightX <-20. 5. 20.>                   	\
                 uLightY <-20. -0.9756 20.>                  \
-                uLightZ <-20. 20. 20.>                  \
-                uColor {1. .7 0. 1.}                    \
-                uSpecularColor {1. 1. 1. 1.}
-
-QuadXY  -0.2  1.  200 200
+                uLightZ <-20. 20. 20.>                  	\
+                uColor {1. .7 0. 1.}                    	\
+                uSpecularColor {1. 1. 1. 1.}												
+QuadXY  -0.2  1.  200  200

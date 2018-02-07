@@ -5,6 +5,7 @@ in vec3 vNormal;
 in vec3 vLight;
 in vec3 vEye;
 
+uniform bool uNormal;
 uniform float uKa;
 uniform float uKd;
 uniform float uKs;
@@ -33,14 +34,19 @@ main( )
 
 	vec4 ambient = uKa * uColor;
 	
+	//use the dot product of the normal 
+	//and reflection vector to compute light
 	vec4 diffuse = uKd * uColor;
+	if(uNormal){
+		diffuse *= max(dot(Normal, Light), 0.);
+	}
 	
 	float s = 0.;
-	if (dot(Normal, Light) > 0.) {
+	if( dot(Normal,Light) > 0. )
+	{
 		vec3 ref = normalize(2. * Normal * dot(Normal, Light) - Light);
 		s = pow(max(dot(Eye,ref), 0.), uShininess);
 	}
-	
 	vec4 specular = uKs * s * uSpecularColor;
 	
 	gl_FragColor = vec4(ambient.rgb + diffuse.rgb + specular.rgb, 1.);	// apply lighting model
