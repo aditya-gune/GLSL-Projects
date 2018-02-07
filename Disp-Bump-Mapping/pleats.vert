@@ -6,9 +6,8 @@ out vec3 vNormal;
 out vec3 vLight;
 out vec3 vEye;
 
-uniform float uA;
+uniform float uK;
 uniform float uB;
-uniform float uC;
 uniform float uLightX;
 uniform float uLightY;
 uniform float uLightZ;
@@ -20,10 +19,10 @@ const float PI = 3.1415926;
 void
 main( )
 {
-	vec4 p = vec4(gl_Vertex.x, gl_Vertex.y, uA*cos(uB*gl_Vertex.x)*cos(uC*gl_Vertex.y), 1.);
+	vec4 p = vec4(gl_Vertex.x, gl_Vertex.y, uK*cos(uB*gl_Vertex.x)*cos(gl_Vertex.y), 1.);
 	
-	float dzdx = (0-uA) * uB * sin(p.x * uB) * cos(p.y * uC);
-	float dzdy = (0-uA) * uC * sin(p.x * uB) * cos(p.y * uC);
+	float dzdx = (0-uK) * uP * sin(p.x * uP) * cos(p.y);
+	float dzdy = (0-uK) * sin(2*PI*uP) * p.x;
 	
 	vec3 Tx = vec3(1., 0., dzdx);
 	vec3 Ty = vec3(0., 1., dzdy);

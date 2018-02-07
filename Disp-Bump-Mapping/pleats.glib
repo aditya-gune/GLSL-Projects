@@ -6,9 +6,8 @@ LookAt 0 0 3  0 0 0  0 1 0
 Vertex		pleats.vert
 Fragment	pleats.frag
 Program		Pleats					\
-				uA <0. 0.1 1.0>							\
+				uK <0. 0.1 1.0>							\
 				uB <0. 0.1 10>							\
-				uC <0. 0.1 10>							\
                 uNoiseAmp <0. 0. 1.0>					\
                 uNoiseFreq <0. 0.1 1.0>					\
                 uKa <0. 0.1 1.0>                        \
