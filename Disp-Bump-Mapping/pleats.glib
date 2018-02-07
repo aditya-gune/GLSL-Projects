@@ -3,14 +3,12 @@
 Perspective 70
 LookAt 0 0 3  0 0 0  0 1 0
 
-
-
 Vertex		pleats.vert
 Fragment	pleats.frag
 Program		Pleats					\
 				uA <0. 0.1 1.0>							\
-				uB <0. 0.1 1.0>							\
-				uC <0. 0.1 1.0>							\
+				uB <0. 0.1 10>							\
+				uC <0. 0.1 10>							\
                 uNoiseAmp <0. 0. 1.0>					\
                 uNoiseFreq <0. 0.1 1.0>					\
                 uKa <0. 0.1 1.0>                        \
@@ -23,4 +21,4 @@ Program		Pleats					\
                 uColor {1. .7 0. 1.}                    \
                 uSpecularColor {1. 1. 1. 1.}
 
-QuadXY  -0.2  1.  200  200
+QuadXY  -0.2  1.  200 200
