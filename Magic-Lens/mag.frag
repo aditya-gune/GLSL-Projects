@@ -10,6 +10,7 @@ uniform float uRotAngle;
 uniform float uSharpFactor;
 uniform float uRadius;
 uniform bool uCircle;
+uniform bool uSpecial;
 
 in vec2 vST;
 
@@ -72,6 +73,9 @@ vec4 modify(float newS, float newT){
 		newS = newS*cos(uRotAngle) - newT*sin(uRotAngle);
 		newT = newS*sin(uRotAngle) + newT*cos(uRotAngle);
 		
+		
+		
+		
 		vec2 st = vec2(newS, newT);
 		
 		vec4 newColor = texture2D( uImageUnit,  st );
@@ -95,5 +99,8 @@ vec4 modify(float newS, float newT){
 		target += 4.*(i00);
 		target /= 16.;
 		vec4 color = vec4( mix( target, newColor.rgb, uSharpFactor ), 1. );
+		if(uSpecial){
+			color = vec4(mix( newColor.rgb, vec3(sqrt(newColor.r), sqrt(newColor.g), sqrt(newColor.b)) , uSharpFactor), 1);
+		}
 		return color;
 }

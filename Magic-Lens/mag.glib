@@ -7,6 +7,7 @@ Texture2D 5 kec.bmp
 Vertex   mag.vert
 Fragment mag.frag
 Program  Mag							\
+	uCircle <false>						\
 	uSc <0. .5 1.>						\
 	uTc <0. .5 1.>						\
 	uDs      <0.01 .4 .5>				\
@@ -15,7 +16,7 @@ Program  Mag							\
 	uRotAngle  <-3.14159 0. 3.14159>	\
 	uSharpFactor  <0. 1. 5.>			\
 	uRadius  <0. .5 1.>					\
-	uCircle <false>						\
+	uSpecial <false>					\
 	uImageUnit  5
 
 QuadXY .2 5.
