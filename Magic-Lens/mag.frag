@@ -7,6 +7,7 @@ uniform float uDs;
 uniform float uDt;
 uniform float uMagFactor;
 uniform float uRotAngle;
+uniform float uSharpFactor;
 in vec2 vST;
 
 void
@@ -35,8 +36,31 @@ main( )
 		newS = newS*cos(uRotAngle) - newT*sin(uRotAngle);
 		newT = newS*sin(uRotAngle) + newT*cos(uRotAngle);
 		
-		vec4 newColor = texture2D( uImageUnit,  vec2(newS, newT) );
-		gl_FragColor = newColor;
+		vec2 st = vec2(newS, newT);
+		
+		vec4 newColor = texture2D( uImageUnit,  st );
+		
+		vec2 stp0 = vec2(1./newS,  0. );
+		vec2 st0p = vec2(0.     ,  1./newT);
+		vec2 stpp = vec2(1./newS,  1./newT);
+		vec2 stpm = vec2(1./newS, -1./newT);
+		vec3 i00 =   texture2D( uImageUnit, st ).rgb;
+		vec3 im1m1 = texture2D( uImageUnit, st-stpp ).rgb;
+		vec3 ip1p1 = texture2D( uImageUnit, st+stpp ).rgb;
+		vec3 im1p1 = texture2D( uImageUnit, st-stpm ).rgb;
+		vec3 ip1m1 = texture2D( uImageUnit, st+stpm ).rgb;
+		vec3 im10 =  texture2D( uImageUnit, st-stp0 ).rgb;
+		vec3 ip10 =  texture2D( uImageUnit, st+stp0 ).rgb;
+		vec3 i0m1 =  texture2D( uImageUnit, st-st0p ).rgb;
+		vec3 i0p1 =  texture2D( uImageUnit, st+st0p ).rgb;
+		vec3 target = vec3(0.,0.,0.);
+		target += 1.*(im1m1+ip1m1+ip1p1+im1p1);
+		target += 2.*(im10+ip10+i0m1+i0p1);
+		target += 4.*(i00);
+		target /= 16.;
+		vec4 color = vec4( mix( target, newColor.rgb, uSharpFactor ), 1. );
+
+		gl_FragColor = color;
 	}
 	else{
 		gl_FragColor = vec4(rgb.r, rgb.g, rgb.b, 1);
