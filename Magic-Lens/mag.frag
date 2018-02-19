@@ -8,28 +8,64 @@ uniform float uDt;
 uniform float uMagFactor;
 uniform float uRotAngle;
 uniform float uSharpFactor;
+uniform float uRadius;
+uniform bool uCircle;
+
 in vec2 vST;
+
+vec4 modify(float newS, float newT);
 
 void
 main( )
 {
-
 	ivec2 ires = textureSize( uImageUnit, 0 );
 	vec3 rgb = texture2D( uImageUnit,  vST ).rgb;
 	
 	float s = vST.s;
 	float t = vST.t;
 	
-	float sLeft = uSc - (uDs/2);
-	float sRight = uSc + (uDs/2);
+	float sc = uSc;
+	float tc = uTc;
+	float ds = uDs;
+	float dt = uDt;
 	
-	float tTop = uTc - (uDt/2);
-	float tBot = uTc + (uDt/2);
+	float sLeft = sc - (ds/2);
+	float sRight = sc + (ds/2);
+	
+	float tTop = tc - (dt/2);
+	float tBot = tc + (dt/2);
 	
 	float newS = s;
 	float newT = t;
 	
-	if( (s >= (uSc - (uDs/2)) && s <= (uSc + (uDs/2))) && (t >= (uTc - (uDt/2)) && t <= (uTc + (uDt/2))) ){
+	
+	
+	
+	if(uCircle){
+		float sds = pow((s - sc), 2);
+		float sdt = pow((t - tc), 2);
+		
+		float d = sqrt(sds + sdt);
+		
+		if(d <= uRadius){
+			vec4 color = modify(newS, newT);
+			gl_FragColor = color;
+		}
+		else{
+			gl_FragColor = vec4(rgb.r, rgb.g, rgb.b, 1);
+		}
+	}
+	else if( (s >= (sc - (ds/2)) && s <= (sc + (ds/2))) && (t >= (tc - (dt/2)) && t <= (tc + (dt/2))) ){
+		
+		vec4 color = modify(newS, newT);
+		gl_FragColor = color;
+	}
+	else{
+		gl_FragColor = vec4(rgb.r, rgb.g, rgb.b, 1);
+	}
+}
+
+vec4 modify(float newS, float newT){
 		newS /= uMagFactor;
 		newT /= uMagFactor;
 		
@@ -59,10 +95,5 @@ main( )
 		target += 4.*(i00);
 		target /= 16.;
 		vec4 color = vec4( mix( target, newColor.rgb, uSharpFactor ), 1. );
-
-		gl_FragColor = color;
-	}
-	else{
-		gl_FragColor = vec4(rgb.r, rgb.g, rgb.b, 1);
-	}
+		return color;
 }

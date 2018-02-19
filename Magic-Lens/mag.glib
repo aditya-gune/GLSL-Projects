@@ -14,6 +14,8 @@ Program  Mag							\
 	uMagFactor <.1 1. 25.>				\
 	uRotAngle  <-3.14159 0. 3.14159>	\
 	uSharpFactor  <0. 1. 5.>			\
+	uRadius  <0. .5 1.>					\
+	uCircle <false>						\
 	uImageUnit  5
 
 QuadXY .2 5.
