@@ -6,6 +6,7 @@ uniform float uTc;
 uniform float uDs;
 uniform float uDt;
 uniform float uMagFactor;
+uniform float uRotAngle;
 in vec2 vST;
 
 void
@@ -30,6 +31,9 @@ main( )
 	if( (s >= (uSc - (uDs/2)) && s <= (uSc + (uDs/2))) && (t >= (uTc - (uDt/2)) && t <= (uTc + (uDt/2))) ){
 		newS /= uMagFactor;
 		newT /= uMagFactor;
+		
+		newS = newS*cos(uRotAngle) - newT*sin(uRotAngle);
+		newT = newS*sin(uRotAngle) + newT*cos(uRotAngle);
 		
 		vec4 newColor = texture2D( uImageUnit,  vec2(newS, newT) );
 		gl_FragColor = newColor;

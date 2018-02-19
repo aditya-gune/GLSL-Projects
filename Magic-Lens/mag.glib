@@ -12,6 +12,7 @@ Program  Mag							\
 	uDs      <0.01 .4 .5>				\
 	uDt      <0.01 .4 .5>				\
 	uMagFactor <.1 1. 25.>				\
+	uRotAngle  <-3.14159 0. 3.14159>	\
 	uImageUnit  5
 
 QuadXY .2 5.
