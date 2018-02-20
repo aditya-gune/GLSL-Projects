@@ -12,7 +12,7 @@ Program  Mag							\
 	uTc <0. .5 1.>						\
 	uDs      <0.01 .4 .5>				\
 	uDt      <0.01 .4 .5>				\
-	uMagFactor <.1 1. 25.>				\
+	uMagFactor <.1 2. 25.>				\
 	uRotAngle  <-3.14159 0. 3.14159>	\
 	uSharpFactor  <0. 1. 5.>			\
 	uRadius  <0. .5 1.>					\
