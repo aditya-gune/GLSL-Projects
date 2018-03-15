@@ -6,13 +6,31 @@ layout( triangles )  in;
 layout( triangle_strip, max_vertices=204 )  out;
 
 uniform int   uLevel;
+uniform float uQuantize;
 
 in  vec3  vNormal[3];
 out float gLightIntensity;
 
 vec3 V0, V01, V02;
 vec3 N0, N01, N02;
-
+float
+Quantize( float f )
+{
+	f *= uQuantize;
+	f += .5;		// round-off
+	int fi = int( f );
+	f = float( fi ) / uQuantize;
+	return f;
+}
+vec3
+QuantizeVec3( vec3 v )
+{
+	vec3 vv;
+	vv.x = Quantize( v.x );
+	vv.y = Quantize( v.y );
+	vv.z = Quantize( v.z );
+	return vv;
+}
 void
 ProduceVertex( float s, float t )
 {
@@ -26,6 +44,7 @@ ProduceVertex( float s, float t )
 	
 	gLightIntensity  = abs(  dot( normalize(lightPos - v), tnorm )  );
 
+	v = QuantizeVec3(v);
 	
 	vec4 ECposition = gl_ModelViewMatrix * vec4( (v), 1. );
 	
