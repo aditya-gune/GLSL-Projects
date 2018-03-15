@@ -1,22 +1,19 @@
-#version 400 compatibility
+#version 330 compatibility
 #extension GL_EXT_gpu_shader4: enable
 #extension GL_EXT_geometry_shader4: enable
 
-layout( triangles ) in;
-layout( triangle_strip, max_vertices=204 ) out;
-in vec3		vNormal[3];
-out float	gLightIntensity;
+layout( triangles )  in;
+layout( triangle_strip, max_vertices=204 )  out;
 
-//uniform bool uModelCoords;
-uniform	int uLevel;
-//uniform float uQuantize;
-uniform vec4 uColor;
+uniform int   uLevel;
+uniform float uQuantize;
+uniform bool  uModelCoords;
 
-vec3 lightPos = vec3( 0., 10., 0. );
+in  vec3  vNormal[3];
+out float gLightIntensity;
 
 vec3 V0, V01, V02;
 vec3 N0, N01, N02;
-
 float
 Quantize( float f )
 {
@@ -38,27 +35,34 @@ QuantizeVec3( vec3 v )
 void
 ProduceVertex( float s, float t )
 {
+	const vec3 lightPos = vec3( 0., 10., 0. );
+
 	vec3 v = V0 + s*V01 + t*V02;
 	vec3 n = N0 + s*N01 + t*N02;
-
-	vec3 tnorm = normalize( gl_NormalMatrix * n );	// the transformed normal	
+	
+	vec3 tnorm = normalize( gl_NormalMatrix * n );	// the transformed normal
+	
 	
 	gLightIntensity  = abs(  dot( normalize(lightPos - v), tnorm )  );
 
-	if(!uModelCoords){
+	vec4 ECposition;
+	if(uModelCoords)
+	{
 		v = QuantizeVec3(v);
-		v = (gl_ModelViewMatrix * vec4( v, 1. )).xyz;
+		ECposition = gl_ModelViewMatrix * vec4( (v), 1. );
 	}
-	else{
-		v = (gl_ModelViewMatrix * vec4( v, 1. )).xyz;
-		v = QuantizeVec3(v);
+	else
+	{
+		ECposition = gl_ModelViewMatrix * vec4( (v), 1. );
+		vec3 k = ECposition.xyz;
+		k = QuantizeVec3(k);
+		ECposition = vec4(k, ECposition.w);
 	}
-	
-	vec4 ECposition = vec4(v, 1.);
-	
 	gl_Position = gl_ProjectionMatrix * ECposition;
 	EmitVertex();
 }
+
+
 
 void
 main()
@@ -70,7 +74,7 @@ main()
 	N01 = ( vNormal[1] - vNormal[0] ).xyz;
 	N02 = ( vNormal[2] - vNormal[0] ).xyz;
 	N0  =   vNormal[0].xyz;
-	
+
 	int numLayers = 1 << uLevel;
 
 	float dt = 1. / float( numLayers );
@@ -105,5 +109,3 @@ main()
 		t_bot -= dt;
 	}
 }
-
-

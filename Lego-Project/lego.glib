@@ -3,7 +3,7 @@ Perspective 70
 LookAt  0 0 3     0 0 0    0 1 0
 
 Vertex   lego.vert
-Geometry legoo.geom
+Geometry lego.geom
 Fragment lego.frag
 Program Lego  					\
 		uModelCoords <false>	\
