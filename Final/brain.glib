@@ -1,0 +1,17 @@
+##OpenGL GLIB
+LookAt  0 0 3  0 0 0  0 1 0
+Perspective 70
+
+Vertex   brain.vert
+Fragment brain.frag
+Program  Brain                                               \
+        uMaxHeight <0. 110. 450.> 	\
+		uTol <0. 25. 200.> \
+		uNoiseMag <0. 0.5 2.>  \
+		uA <0. 2. 5.>  \
+		uB <0. 0. .6>  \
+		uScale <0. .7 1.>  uBias <0. 0. .6>		\
+		uSkyColor {.1 .1 1. 1.}  \
+		uCloudColor {0.8 0.8 0.8 1.}
+
+Obj brain.obj
