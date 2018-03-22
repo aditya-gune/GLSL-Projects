@@ -8,12 +8,7 @@ Program  Brain                                               \
 		uDiscard <false>		\
 		uEyePosition <false>		\
         uMaxHeight <0. 110. 450.> 	\
-		uTol <0. 25. 200.> \
-		uNoiseMag <0. 0.5 2.>  \
-		uA <0. 2. 5.>  \
-		uB <0. 0. .6>  \
-		uScale <0. .7 1.>  uBias <0. 0. .6>		\
-		uSkyColor {.1 .1 1. 1.}  \
-		uCloudColor {0.8 0.8 0.8 1.}
+		uA <0. 0.5 1.>  \
+		uETA <0. 1.4 3.0>  
 
 Obj brain.obj
