@@ -1,8 +1,11 @@
 #version 330 compatibility
 
+in vec3 vECposition;
 in vec3 vMCposition;
 in vec3 vCenter;
 
+uniform bool uDiscard;
+uniform bool uEyePosition;
 uniform sampler3D Noise3;
 
 uniform float uScale;
@@ -45,7 +48,12 @@ Pastel( float r, float g, float b )
 void
 main( )
 {
-	vec4 noisevec = texture3D( Noise3, uScale*vMCposition );
+	vec3 coordpos = vMCposition;
+	if(uEyePosition)
+	{
+		coordpos = vECposition;
+	}
+	vec4 noisevec = texture3D( Noise3, uScale*coordpos );
 
 	// get the sky color:
 
@@ -56,10 +64,12 @@ main( )
 
 	// get the oil color:
 
-	noisevec  = texture3D( Noise3, vMCposition );
-	float rad = distance( vMCposition, vCenter ) + uNoiseMag * ( noisevec.r - 0.5 );
+	noisevec  = texture3D( Noise3, coordpos );
 
-	float d  = uMaxHeight * exp( -uA*rad );
+	
+	float rad = distance( coordpos, vCenter ) + uNoiseMag * ( noisevec.r - 0.5 );
+
+	float d  = uMaxHeight * exp( -uA*rad*rad );
 	int mmin = int( 2.*d*ETA/650. - .5 );
 	int mmax = int( 2.*d*ETA/350. - .5 );
 	int m = ( mmin + mmax ) / 2;
@@ -81,6 +91,10 @@ main( )
 	}
 	else
 	{
+		if(uDiscard)
+		{
+			discard;
+		}
 		color = vec3( 1., 1., 1. );
 		alpha = 0.1;
 	}
