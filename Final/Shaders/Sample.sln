@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Sample", "Sample.vcxproj", "{3A18C8BB-2941-432F-8F8B-BEB51352D229}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A1C4F925-5572-4C12-8F97-F699992BDAF6}"
+	ProjectSection(SolutionItems) = preProject
+		brain.frag = brain.frag
+		brain.vert = brain.vert
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3A18C8BB-2941-432F-8F8B-BEB51352D229}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3A18C8BB-2941-432F-8F8B-BEB51352D229}.Debug|Win32.Build.0 = Debug|Win32
+		{3A18C8BB-2941-432F-8F8B-BEB51352D229}.Release|Win32.ActiveCfg = Release|Win32
+		{3A18C8BB-2941-432F-8F8B-BEB51352D229}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D31BB315-D974-4FD3-A085-385B776A9D04}
+	EndGlobalSection
+EndGlobal

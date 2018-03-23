@@ -1,0 +1,5 @@
+﻿  sample.cpp
+sample.cpp(239): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+sample.obj : error LNK2019: unresolved external symbol __imp__glewInit@0 referenced in function "void __cdecl InitGraphics(void)" (?InitGraphics@@YAXXZ)
+sample.obj : error LNK2019: unresolved external symbol __imp__glewGetString@4 referenced in function "void __cdecl InitGraphics(void)" (?InitGraphics@@YAXXZ)
+.\Release/Sample.exe : fatal error LNK1120: 2 unresolved externals

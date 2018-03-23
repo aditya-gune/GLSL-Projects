@@ -1,0 +1,15 @@
+﻿  sample.cpp
+d:\aditya\desktop\school\osu\ms\term 5\cs557\assignments\glsl-projects\final\shaders\loadobjfile.h(130): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+d:\aditya\desktop\school\osu\ms\term 5\cs557\assignments\glsl-projects\final\shaders\loadobjfile.h(133): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+d:\aditya\desktop\school\osu\ms\term 5\cs557\assignments\glsl-projects\final\shaders\loadobjfile.h(136): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+d:\aditya\desktop\school\osu\ms\term 5\cs557\assignments\glsl-projects\final\shaders\loadobjfile.h(154): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+d:\aditya\desktop\school\osu\ms\term 5\cs557\assignments\glsl-projects\final\shaders\loadobjfile.h(157): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+d:\aditya\desktop\school\osu\ms\term 5\cs557\assignments\glsl-projects\final\shaders\loadobjfile.h(160): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+d:\aditya\desktop\school\osu\ms\term 5\cs557\assignments\glsl-projects\final\shaders\loadobjfile.h(173): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+d:\aditya\desktop\school\osu\ms\term 5\cs557\assignments\glsl-projects\final\shaders\loadobjfile.h(177): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+d:\aditya\desktop\school\osu\ms\term 5\cs557\assignments\glsl-projects\final\shaders\loadobjfile.h(181): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+d:\aditya\desktop\school\osu\ms\term 5\cs557\assignments\glsl-projects\final\shaders\sample.cpp(294): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+d:\aditya\desktop\school\osu\ms\term 5\cs557\assignments\glsl-projects\final\shaders\sample.cpp(889): warning C4305: '=': truncation from 'double' to 'float'
+d:\aditya\desktop\school\osu\ms\term 5\cs557\assignments\glsl-projects\final\shaders\sample.cpp(891): warning C4305: '=': truncation from 'double' to 'float'
+glslprogram.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/INCREMENTAL:NO' specification
+  Sample.vcxproj -> D:\Aditya\Desktop\School\OSU\MS\Term 5\CS557\Assignments\GLSL-Projects\Final\Shaders\.\Debug\Sample.exe

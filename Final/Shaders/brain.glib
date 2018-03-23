@@ -1,0 +1,14 @@
+##OpenGL GLIB
+LookAt  0 0 3  0 0 0  0 1 0
+Perspective 70
+
+Vertex   brain.vert
+Fragment brain.frag
+Program  Brain                                               \
+		uDiscard <false>		\
+		uEyePosition <false>		\
+        uMaxHeight <0. 110. 450.> 	\
+		uA <0. 0.5 1.>  \
+		uETA <0. 1.4 3.0>  
+
+Obj brain.obj
